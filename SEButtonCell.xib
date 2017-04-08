@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="105" id="KGk-i7-Jjw" customClass="SEButtonCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Sge-wG-aev">
+                        <rect key="frame" x="21" y="26" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="15" id="KNe-bb-eF9"/>
+                            <constraint firstAttribute="height" constant="15" id="zaQ-gb-BY9"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-qt-QH1">
+                        <rect key="frame" x="44" y="23" width="268" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="268" id="XSz-Qd-WqU"/>
+                            <constraint firstAttribute="height" constant="21" id="qTo-xT-GcK"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" red="0.77254901960784317" green="0.81568627450980391" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qfd-FB-DSv">
+                        <rect key="frame" x="21" y="52" width="160" height="35"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="160" id="08n-xr-JdO"/>
+                            <constraint firstAttribute="height" constant="35" id="gxe-79-kDH"/>
+                        </constraints>
+                        <state key="normal" image="se_button_cell_button"/>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" red="0.1333333333" green="0.14901960780000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="Sge-wG-aev" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="3sG-Ug-w7X"/>
+                    <constraint firstItem="Qfd-FB-DSv" firstAttribute="top" secondItem="dl6-qt-QH1" secondAttribute="bottom" constant="8" id="4m8-38-Y6e"/>
+                    <constraint firstItem="dl6-qt-QH1" firstAttribute="leading" secondItem="Sge-wG-aev" secondAttribute="trailing" constant="8" id="7bt-kv-eBK"/>
+                    <constraint firstItem="dl6-qt-QH1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="EAA-OQ-oRV"/>
+                    <constraint firstItem="dl6-qt-QH1" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="QYR-fZ-M3s"/>
+                    <constraint firstItem="Qfd-FB-DSv" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="13" id="nUm-jA-H9f"/>
+                    <constraint firstItem="Sge-wG-aev" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="13" id="vPK-aW-UUZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="button" destination="Qfd-FB-DSv" id="ium-JM-cw5"/>
+                <outlet property="icon" destination="Sge-wG-aev" id="ptc-53-6oA"/>
+                <outlet property="time" destination="dl6-qt-QH1" id="z8t-UB-ukj"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="38.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="se_button_cell_button" width="338" height="74"/>
+    </resources>
+</document>
