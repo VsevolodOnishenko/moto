@@ -57,7 +57,8 @@
 
 - (void) loadData {
     
-    NSString *url = [NSString stringWithFormat:@"http://motomoto.2-wm.ru/apiv1/events/small/%@/", [[NSUserDefaults standardUserDefaults] objectForKey:@"se.ID"]];
+    NSString *url = [NSString stringWithFormat:@"http://moto.2-wm.ru/apiv2/smallEvents.get?id=%@&fields=user_id,title,latitude,longitude,start_time,description,type,creation_time",
+                     [[NSUserDefaults standardUserDefaults] objectForKey:@"se.ID"]];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url parameters:nil progress:nil
@@ -74,7 +75,6 @@
                          ];
              
              [self.tableView reloadData];
-             
              [self loadUserData];
          }
      
@@ -85,12 +85,14 @@
 
 - (void) loadUserData {
     
-    NSString *url = [NSString stringWithFormat:@"http://motomoto.2-wm.ru/apiv1/profile/%d", seObject.UserID];
+    NSString *url = [NSString stringWithFormat:@"http://moto.2-wm.ru/apiv2/users.get?id=%d&fields=image,first_name,last_name", seObject.UserID];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager GET:url parameters:nil progress:nil
      
          success:^(NSURLSessionTask *task, id responseObject) {
+             
+             NSLog(@"Response is %@", responseObject);
              
              user = [[User alloc] initUserWithImageURL:[responseObject valueForKey:@"image"]
                                                  fname:[responseObject valueForKey:@"first_name"]
@@ -99,6 +101,7 @@
              
              [self.tableView reloadData];
          }
+   
      
          failure:^(NSURLSessionTask *operation, NSError *error) {
              NSLog(@"Error: %@", error);
@@ -165,17 +168,18 @@
             [positionButton addTarget:self
                                action:@selector(placeLocation:)
                      forControlEvents:UIControlEventTouchUpInside];
-            positionButton.frame = CGRectMake(CGRectGetMaxX([cell bounds]) * 0.88, CGRectGetMaxY([cell bounds]) * 0.5, 30.0, 30.0);
-            UIImage *image = [UIImage imageNamed:@"target button copy.png"];
-            [positionButton setImage:image forState:UIControlStateNormal];
+            positionButton.frame = CGRectMake(CGRectGetMaxX([cell bounds]) * 0.85, CGRectGetMaxY([cell bounds]) * 0.43, 40.0, 40.0);
+            UIImage *imageLoc = [UIImage imageNamed:@"ic_my_location.png"];
+            [positionButton setImage:imageLoc forState:UIControlStateNormal];
             [cell.contentView addSubview:positionButton];
             
             UIButton *pathButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             [pathButton addTarget:self
                            action:@selector(pathButtonTapped:)
                  forControlEvents:UIControlEventTouchUpInside];
-            pathButton.frame = CGRectMake(CGRectGetMaxX([cell bounds]) * 0.88, CGRectGetMaxY([cell bounds]) * 0.75, 30.0, 30.0);
-            pathButton.backgroundColor = [UIColor blueColor];
+            pathButton.frame = CGRectMake(CGRectGetMaxX([cell bounds]) * 0.85, CGRectGetMaxY([cell bounds]) * 0.67, 40.0, 40.0);
+            UIImage *imagePath = [UIImage imageNamed:@"ic_directions.png"];
+            [pathButton setImage:imagePath forState:UIControlStateNormal];
             [cell.contentView addSubview:pathButton];
             
             return cell;
@@ -240,7 +244,10 @@
             
             cell.image.layer.cornerRadius = 20;
             cell.image.clipsToBounds = true;
-            [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://motomoto.2-wm.ru/%@", user.image_url]]];
+           // [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://motomoto.2-wm.ru/%@", user.image_url]]];
+            [cell.image setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://moto.2-wm.ru/apiv2/users.get?id=15&fields=image"]]];
+
+            NSLog(@"cell image is %@", user.ID);
             
             cell.title.text = [NSString stringWithFormat:@"%@ %@", user.fname, user.lname];
             

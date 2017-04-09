@@ -55,7 +55,7 @@
     
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         NSString *url = [NSString stringWithFormat:@"http://moto.2-wm.ru/apiv2/bigEvents.get?id=%@&fields=image,title,description,contacts,address,start_time",
-        [[NSUserDefaults standardUserDefaults] objectForKey:@"user.id"]];
+        [[NSUserDefaults standardUserDefaults] objectForKey:@"user.id"]];//спросить нужно ли использовать token
         [manager GET: url parameters:nil progress:nil success:^(NSURLSessionTask *task, id responseObject) {
             
              NSLog(@"Response object is %@", responseObject);

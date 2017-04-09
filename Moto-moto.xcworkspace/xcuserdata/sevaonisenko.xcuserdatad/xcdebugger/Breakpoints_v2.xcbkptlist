@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BigEvent.m"
-            timestampString = "513269203.01668"
+            filePath = "SmallEventView.m"
+            timestampString = "513452795.83817"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-loadData"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
+            landmarkName = "-loadUserData"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

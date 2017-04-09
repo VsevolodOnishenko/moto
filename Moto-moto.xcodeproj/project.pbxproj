@@ -2282,7 +2282,6 @@
 				TargetAttributes = {
 					42B8B8171DBA60250054F537 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = SMBMRGRW59;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -2763,7 +2762,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = SMBMRGRW59;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Moto-moto/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2786,7 +2785,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = SMBMRGRW59;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Moto-moto/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -151,7 +151,7 @@
               
               NSLog(@"%@", responseObject);
               
-              if ([[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"id"] lastObject] > lastidMessage) {
+              if ([[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"my"] lastObject] > lastidMessage) {
                   
                   NSArray *allMessage = [[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"text"];
                   NSArray *allAuthors = [[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"my"];

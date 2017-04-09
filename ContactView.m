@@ -230,7 +230,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [[NSUserDefaults standardUserDefaults] setObject:[contactUser.ident objectAtIndex:indexPath.row] forKey:@"user.id"];
+    [[NSUserDefaults standardUserDefaults] setObject:[contactUser.ident objectAtIndex:indexPath.row] forKey:@"user.ID"];
     
     CATransition* transition = [CATransition animation];
     transition.duration = 0.1;

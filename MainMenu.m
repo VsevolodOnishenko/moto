@@ -15,6 +15,7 @@
     
     LentaJSONObject *lentaObject;
     NotificationModel *notification;
+    UserData *userData;
     
     bool isSelected;
 }
@@ -107,17 +108,18 @@
 
 - (void) loadLentaData {
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET: @"http://motomoto.2-wm.ru/apiv1/events/big?format=json" parameters:nil progress:nil
-     
+     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+     [manager GET: @"http://moto.2-wm.ru/apiv2/bigEvents.getList" parameters:nil progress:nil
          success:^(NSURLSessionTask *task, id responseObject) {
+             
+             NSLog(@"%@", responseObject);
              
              lentaObject = [[LentaJSONObject alloc] initLentaObjectWithID:[[[[responseObject valueForKey:@"data"] valueForKey:@"items"] allObjects] valueForKey:@"id"]
                                                                 image_url:[[[[responseObject valueForKey:@"data"] valueForKey:@"items"] allObjects] valueForKey:@"image"]
                                                                     title:[[[[responseObject valueForKey:@"data"] valueForKey:@"items"] allObjects] valueForKey:@"title"]
                             ];
-             
-         
+           
+
              [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:1] withRowAnimation:UITableViewRowAnimationFade];
              [self hideActivityIndicatorHeaderView];
         }
@@ -127,17 +129,38 @@
         }];
 }
 
+- (void) getUserData {
+    
+    NSError *error = nil;
+    userData = [[UserData alloc] initUserDataWithToken:[FDKeychain itemForKey: @"token"
+                                                                   forService: @"MotoMotoApp"
+                                                                        error: &error]
+                
+                                                    ID:[FDKeychain itemForKey: @"id"
+                                                                   forService: @"MotoMotoApp"
+                                                                        error: &error]
+                ];
+}
+
+
+
 - (void) loadNotificationData {
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager GET: @"http://motomoto.2-wm.ru/apiv1/events/small?format=json" parameters:nil progress:nil
+    NSString *url = [NSString stringWithFormat:@"http://moto.2-wm.ru/apiv2/smallEvents.get?id=%d&fields=user_id,start_time", [userData.ID intValue]];
+    [manager GET: url parameters:nil progress:nil
      
          success:^(NSURLSessionTask *task, id responseObject) {
              
-             notification = [[NotificationModel alloc] initNotificationWithUserID:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"user_id"]
-                                                                               ID:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"id"]
-                                                                             time:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"start_time"]
-                             ];
+             if ([[[responseObject valueForKey:@"data"] valueForKey:@"erorr"] isEqualToString:@"not_found"]) {
+                 
+             } else {
+                 
+                 notification = [[NotificationModel alloc] initNotificationWithUserID:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"user_id"]
+                                                                                   ID:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"id"]
+                                                                                 time:[[[responseObject valueForKey:@"data"] valueForKey:@"items"] valueForKey:@"start_time"]
+                                 ];
+             }
              
              [self.tableView reloadData];
          }

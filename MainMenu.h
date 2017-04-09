@@ -18,6 +18,8 @@
 
 #import "NotificationCell.h"
 #import "LentaCell.h"
+#import "UserData.h"
+#import "FDKeychain.h"
 
 @interface MainMenu : UITableViewController
 
