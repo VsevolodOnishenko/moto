@@ -1,4 +1,0 @@
-/Users/sevaonisenko/Downloads/motomoto-iphone-develop-1ab8da11940e368a84e55cfa386cd9319c05be57/Pods/FBSDKCoreKit/FacebookSDKStrings.bundle
-/Users/sevaonisenko/Downloads/motomoto-iphone-develop-1ab8da11940e368a84e55cfa386cd9319c05be57/Pods/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle
-/Users/sevaonisenko/Downloads/motomoto-iphone-develop-1ab8da11940e368a84e55cfa386cd9319c05be57/Pods/IQKeyboardManager/IQKeyboardManager/Resources/IQKeyboardManager.bundle
-/Users/sevaonisenko/Downloads/motomoto-iphone-develop-1ab8da11940e368a84e55cfa386cd9319c05be57/Pods/JSQMessagesViewController/JSQMessagesViewController/Assets/JSQMessagesAssets.bundle
